@@ -1,0 +1,5 @@
+<br />
+<b>Notice</b>:  Trying to access array offset on value of type null in <b>/opt/bitnami/mdi/api/endpoints.php</b> on line <b>3245</b><br />
+<br />
+<b>Notice</b>:  Trying to access array offset on value of type null in <b>/opt/bitnami/mdi/api/endpoints.php</b> on line <b>3290</b><br />
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M8,18C6.67,18 5.79,18.79 5.29,19.29C2.35,18.93 1.79,18.42 1,18.16V20.41C1.09,20.5 1.18,20.59 1.29,20.71C1.79,21.21 2.67,22 4,22C9.73,21.14 10.44,21.8 11.5,21.96C11.66,22 11.83,22 12,22C13.33,22 14.21,21.21 14.71,20.71C22.82,20.59 22.91,20.5 23,20.41V18.16C22.21,18.42 21.65,18.93 21.29,19.29C20.79,19.79 20.67,20 20,20C11.78,20 11.63,19.97 11.5,19.92C11.22,19.82 11.05,19.63 10.71,19.29C10.21,18.79 9.33,18 8,18M22,10.5C22,10.5 24,12.67 24,14C24,15.1 23.1,16 22,16C20,12.67 22,10.5 22,10.5M22.5,7.13L19.24,5.24L12.73,9C12.39,8.4 11.74,8 11,8H9V6H10C10.55,6 11,5.55 11,5H6C5.45,4 5,4.45 5,5H7V8H
