@@ -5,8 +5,6 @@ This widget is inspired by the Merzedes Benz integration widget by @muelli1967
 
 https://community.openhab.org/t/mercedes-benz-integration/117795/62
 
-with the exception not to work in dark mode actually (icons not working due to fixed black color)
-
 # Prerequisits:
 This widget does not need many configs, therefore it uses the predefined channel names of the binding. You should create a car equipement under your model and add all channels as points with predefined names.
 All Icons in the subfoler need to be copied to your openHAB 3 conf-folders icon directory : ../conf/icons/classic/*
@@ -24,6 +22,10 @@ The widget takes three configs only:
 ![image](https://user-images.githubusercontent.com/5521736/119628988-e4f44c80-be0d-11eb-89d0-28fc4f3a7cca.png)
 This is like the widget looks like on the overview page. If Your primary fuelType is 3(Electric), it will show battery level and electric range as well.
 After clicking on the widget, it will expand to 
-![image](https://user-images.githubusercontent.com/5521736/119629166-0c4b1980-be0e-11eb-83dc-14660c0f3448.png)
+![image](https://user-images.githubusercontent.com/5521736/119664570-c30dc080-be33-11eb-9b1e-9d02eecbc580.png)
+
+Or in Dark Mode
+![image](https://user-images.githubusercontent.com/5521736/119664704-e5074300-be33-11eb-9f5e-6a8638aa1366.png)
+
 
 # Enjoy!
