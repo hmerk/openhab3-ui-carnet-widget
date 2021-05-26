@@ -18,7 +18,7 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: May 26, 2021, 10:05:08 AM
+timestamp: May 26, 2021, 2:57:39 PM
 component: f7-card
 config:
   expandable: true
@@ -227,43 +227,43 @@ slots:
                       - component: oh-list-item
                         config:
                           title: Windows
-                          icon: oh:car_door
+                          icon: '=themeOptions.dark === "light" ? "oh:car_door" : "oh:car_door_white" '
                           badgeColor: '=(items[props.itemPrefix + "_AllWindowsClosed"].state === "ON") ? "green" : "red" '
                           badge: '=(items[props.itemPrefix + "_AllWindowsClosed"].state === "ON") ? "CLOSED" : "OPEN" '
                       - component: oh-list-item
                         config:
-                          title: Tires
-                          icon: oh:car_tire_alert
+                          title: Tire pressure
+                          icon: '=themeOptions.dark === "light" ? "oh:car_tire_alert" : "oh:car_tire_alert_white" '
                           badgeColor: '=(items[props.itemPrefix + "_AllTiresOK"].state === "ON") ? "green" : "red" '
                           badge: '=(items[props.itemPrefix + "_AllTiresOK"].state === "ON") ? "GOOD" : "BAD" '
                       - component: oh-list-item
                         config:
                           title: Parking Break
-                          icon: oh:car_brake_parking
+                          icon: '=themeOptions.dark === "light" ? "oh:car_brake_parking" : "oh:car_brake_parking_white" '
                           badgeColor: '=(items[props.itemPrefix + "_ParkingBreak"].state === "ON") ? "red" : "green" '
                           badge: =items[props.itemPrefix + "_ParkingBreak"].state
                       - component: oh-list-item
                         config:
                           title: Parking Light
-                          icon: oh:car_parking_lights
+                          icon: '=themeOptions.dark === "light" ? "oh:car_parking_lights" : "oh:car_parking_lights_white" '
                           badgeColor: '=(items[props.itemPrefix + "_ParkingLight"].state === "ON") ? "green" : "red" '
                           badge: =items[props.itemPrefix + "_ParkingLight"].state
                       - component: oh-list-item
                         config:
                           title: Maintenance
-                          icon: oh:engine_off_outline
+                          icon: '=themeOptions.dark === "light" ? "oh:engine_off_outline" : "oh:engine_off_outline_white" '
                           badgeColor: green
                           badge: =items[props.itemPrefix + "_MaintenanceActionRequired"].state
                       - component: oh-list-item
                         config:
                           title: Inspection
-                          icon: oh:car_info
+                          icon: '=themeOptions.dark === "light" ? "oh:car_info" : "oh:car_info_white" '
                           badgeColor: green
                           badge: =items[props.itemPrefix + "_TimetoInspection"].state + " / " + items[props.itemPrefix + "_DistanceInspection"].state
                       - component: oh-list-item
                         config:
                           title: Oilchange
-                          icon: oh:oil
+                          icon: '=themeOptions.dark === "light" ? "oh:oil" : "oh:oil_white" '
                           badgeColor: green
                           badge: =items[props.itemPrefix + "_IntervalOilChange"].state + " / " +items[props.itemPrefix + "_DistanceOilChange"].state
                       - component: oh-list-item
