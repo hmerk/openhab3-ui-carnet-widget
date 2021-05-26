@@ -232,7 +232,7 @@ slots:
                           badge: '=(items[props.itemPrefix + "_AllWindowsClosed"].state === "ON") ? "CLOSED" : "OPEN" '
                       - component: oh-list-item
                         config:
-                          title: Parking Light
+                          title: Tires
                           icon: oh:car_tire_alert
                           badgeColor: '=(items[props.itemPrefix + "_AllTiresOK"].state === "ON") ? "green" : "red" '
                           badge: '=(items[props.itemPrefix + "_AllTiresOK"].state === "ON") ? "GOOD" : "BAD" '
