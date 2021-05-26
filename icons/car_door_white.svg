@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   id="svg15619"
+   sodipodi:docname="car_door_white.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs15623" />
+  <sodipodi:namedview
+     id="namedview15621"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="35.083333"
+     inkscape:cx="11.985748"
+     inkscape:cy="11.985748"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg15619" />
+  <path
+     d="M19,14H16V16H19V14M22,21H3V11L11,3H21C21.55,3 22,3.45 22,4V21M11.83,5L5.83,11H20V5H11.83Z"
+     id="path15617" />
+  <path
+     style="fill:#ffffff;fill-opacity:1;stroke-width:0.0285036"
+     d="m 3.0071259,15.997587 v -4.981036 l 3.9979699,-3.9978938 3.9979702,-3.997894 5.130296,0.00743 5.130296,0.00743 0.132894,0.065466 c 0.213094,0.1049748 0.382361,0.2735854 0.486011,0.4841257 l 0.09368,0.1902965 0.0074,8.6015516 0.0074,8.601552 h -9.492 -9.4919171 z M 19.026128,15.007126 v -1.011877 h -1.52494 -1.524941 v 1.011877 1.011876 h 1.524941 1.52494 z M 20.023753,7.9952494 V 4.9881235 H 15.926315 11.828877 L 8.8218527,7.9952494 5.814828,11.002375 h 7.104463 7.104462 z"
+     id="path19812" />
+</svg>
