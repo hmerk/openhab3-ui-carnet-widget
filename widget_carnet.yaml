@@ -226,7 +226,7 @@ slots:
                             margin-top: 10px
                       - component: oh-list-item
                         config:
-                          title: Parking Light
+                          title: Windows
                           icon: oh:car_door
                           badgeColor: '=(items[props.itemPrefix + "_AllWindowsClosed"].state === "ON") ? "green" : "red" '
                           badge: '=(items[props.itemPrefix + "_AllWindowsClosed"].state === "ON") ? "CLOSED" : "OPEN" '
