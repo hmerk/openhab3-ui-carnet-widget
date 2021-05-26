@@ -1,0 +1,281 @@
+uid: widget_carnet
+tags: []
+props:
+  parameters:
+    - description: Label
+      label: Label
+      name: propLabel
+      required: false
+      type: TEXT
+    - description: prefix for item names.
+      label: Item prefix
+      name: itemPrefix
+      required: false
+      type: TEXT
+    - description: Picture
+      label: Picture URL
+      name: pictureUrl
+      required: false
+      type: TEXT
+  parameterGroups: []
+timestamp: May 26, 2021, 10:05:08 AM
+component: f7-card
+config:
+  expandable: true
+  swipeToClose: true
+  backdrop: true
+  class:
+    - card-expandable-animate-width
+  style:
+    height: 120px
+    max-height: 120px
+    min-height: 120px
+    min-width: 110px
+    max-width: 400px
+    margin: 5px
+    --f7-theme-color: var(--f7-text-color)
+    background-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+slots:
+  default:
+    - component: f7-card-content
+      config:
+        style:
+          width: 100%
+      slots:
+        default:
+          - component: oh-button
+            config:
+              iconF7: xmark_circle_fill
+              iconSize: 30px
+              style:
+                position: absolute
+                top: 0
+                right: 0
+                padding-top: 10px
+                padding-bottom: 35px
+                z-index: 999
+              class:
+                - card-opened-fade-in
+                - cell-close-button
+                - card-close
+          - component: f7-block
+            config:
+              class:
+                - no-padding
+              style:
+                margin: -5px
+                height: 200px
+            slots:
+              default:
+                - component: f7-row
+                  config:
+                    style:
+                      height: 20px
+                      white-space: nowrap
+                      flex-wrap: nowrap
+                      text-overflow: ellipsis
+                  slots:
+                    default:
+                      - component: f7-col
+                        slots:
+                          default:
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  flex-wrap: nowrap
+                                  width: 100%
+                              slots:
+                                default:
+                                  - component: f7-icon
+                                    config:
+                                      material: directions_car
+                                      size: 20px
+                                      style:
+                                        margin-top: 0px
+                                  - component: Label
+                                    config:
+                                      text: =props.propLabel
+                                      style:
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        text-overflow: ellipsis
+                                        font-size: 16px
+                                        font-weight: 600
+                                        margin-left: 2px
+                                        margin-top: -2px
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  flex-wrap: nowrap
+                                  width: 100%
+                              slots:
+                                default:
+                                  - component: f7-chip
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+                                      text: '="Bat: " + items[(props.itemPrefix + "_RemainingElectric")].displayState'
+                                      color: '=items[(props.itemPrefix + "_RemainingElectric")].state < "10" ? "red" : "green" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                                  - component: f7-chip
+                                    config:
+                                      text: '="Fuel: " + items[(props.itemPrefix + "_RemainingFuel")].displayState'
+                                      color: '=items[(props.itemPrefix + "_RemainingFuel")].state < "20" ? "red" : "green" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                            - component: f7-row
+                              config:
+                                style:
+                                  height: 20px
+                                  white-space: nowrap
+                                  flex-wrap: nowrap
+                                  text-overflow: ellipsis
+                              slots:
+                                default:
+                                  - component: f7-chip
+                                    config:
+                                      text: '=(items[(props.itemPrefix + "_LockVehicle")].state === "ON") ? "locked" : "unlocked" '
+                                      color: '=(items[(props.itemPrefix + "_LockVehicle")].state === "ON") ? "green" : "red" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  white-space: nowrap
+                                  flex-wrap: nowrap
+                                  text-overflow: ellipsis
+                              slots:
+                                default:
+                                  - component: f7-icon
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+                                      material: ev_station
+                                      size: 16px
+                                      color: green
+                                      style:
+                                        margin-top: 20px
+                                  - component: Label
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+                                      text: =(Number.parseFloat(items[(props.itemPrefix + "_ElectricRange")].state.split(" ")[0])).toFixed(0) + ' km'
+                                      style:
+                                        text-overflow: ellipsis
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        margin-top: 20px
+                                        margin-left: 1px
+                                        font-size: 10px
+                                        font-weight: 500
+                                  - component: f7-icon
+                                    config:
+                                      material: local_gas_station
+                                      size: 15px
+                                      color: blue
+                                      style:
+                                        margin-top: 20px
+                                        margin-left: 2px
+                                  - component: Label
+                                    config:
+                                      text: =(Number.parseFloat(items[(props.itemPrefix + "_PrimaryRange")].state.split(" ")[0])).toFixed(0) + ' km'
+                                      style:
+                                        text-overflow: ellipsis
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        margin-left: 1px
+                                        margin-top: 20px
+                                        font-size: 10px
+                                        font-weight: 500
+          - component: f7-block
+            config:
+              class:
+                - card-prevent-open
+                - card-content-padding
+              style:
+                height: 200px
+            slots:
+              default:
+                - component: oh-image
+                  config:
+                    url: =props.pictureUrl
+                    style:
+                      width: 100%
+                      object-fit: cover
+                - component: oh-list
+                  config:
+                    class:
+                      - padding
+                  slots:
+                    default:
+                      - component: Label
+                        config:
+                          text: "other States:"
+                          style:
+                            padding: 7px
+                            border-bottom: 1px solid grey
+                            font-weight: 600
+                            color: gray
+                            margin-top: 10px
+                      - component: oh-list-item
+                        config:
+                          title: Parking Light
+                          icon: oh:car_door
+                          badgeColor: '=(items[props.itemPrefix + "_AllWindowsClosed"].state === "ON") ? "green" : "red" '
+                          badge: '=(items[props.itemPrefix + "_AllWindowsClosed"].state === "ON") ? "CLOSED" : "OPEN" '
+                      - component: oh-list-item
+                        config:
+                          title: Parking Light
+                          icon: oh:car_tire_alert
+                          badgeColor: '=(items[props.itemPrefix + "_AllTiresOK"].state === "ON") ? "green" : "red" '
+                          badge: '=(items[props.itemPrefix + "_AllTiresOK"].state === "ON") ? "GOOD" : "BAD" '
+                      - component: oh-list-item
+                        config:
+                          title: Parking Break
+                          icon: oh:car_brake_parking
+                          badgeColor: '=(items[props.itemPrefix + "_ParkingBreak"].state === "ON") ? "red" : "green" '
+                          badge: =items[props.itemPrefix + "_ParkingBreak"].state
+                      - component: oh-list-item
+                        config:
+                          title: Parking Light
+                          icon: oh:car_parking_lights
+                          badgeColor: '=(items[props.itemPrefix + "_ParkingLight"].state === "ON") ? "green" : "red" '
+                          badge: =items[props.itemPrefix + "_ParkingLight"].state
+                      - component: oh-list-item
+                        config:
+                          title: Maintenance
+                          icon: oh:engine_off_outline
+                          badgeColor: green
+                          badge: =items[props.itemPrefix + "_MaintenanceActionRequired"].state
+                      - component: oh-list-item
+                        config:
+                          title: Inspection
+                          icon: oh:car_info
+                          badgeColor: green
+                          badge: =items[props.itemPrefix + "_TimetoInspection"].state + " / " + items[props.itemPrefix + "_DistanceInspection"].state
+                      - component: oh-list-item
+                        config:
+                          title: Oilchange
+                          icon: oh:oil
+                          badgeColor: green
+                          badge: =items[props.itemPrefix + "_IntervalOilChange"].state + " / " +items[props.itemPrefix + "_DistanceOilChange"].state
+                      - component: oh-list-item
+                        config:
+                          visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? false : true '
+                          title: AddBlue refill
+                          icon: material:local_gas_station
+                          badgeColor: green
+                          badge: =items[props.itemPrefix + "_DistanceAdBlue"].state
+                      - component: oh-list-item
+                        config:
+                          title: last update
+                          icon: f7:clock
+                          badgeColor: yellow
+                          badge: =items[props.itemPrefix + "_LastUpdate"].displayState || items[props.itemPrefix + "_LastUpdate"].state
