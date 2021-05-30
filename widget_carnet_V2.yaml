@@ -18,7 +18,7 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: May 30, 2021, 2:13:00 AM
+timestamp: May 30, 2021, 2:25:42 AM
 component: f7-card
 config:
   expandable: true
@@ -331,7 +331,7 @@ slots:
                                   - component: oh-list-item
                                     config:
                                       title: =loop.item.label
-                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].st
+                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].state
                       - component: oh-toggle-item
                         config:
                           visible: =vars.tab === 'control'
