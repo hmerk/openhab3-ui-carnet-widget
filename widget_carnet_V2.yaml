@@ -1,0 +1,581 @@
+uid: widget_carnet_V2
+tags: []
+props:
+  parameters:
+    - description: Label
+      label: Label
+      name: propLabel
+      required: false
+      type: TEXT
+    - description: prefix for item names.
+      label: Item prefix
+      name: itemPrefix
+      required: false
+      type: TEXT
+    - description: Picture
+      label: Picture URL
+      name: pictureUrl
+      required: false
+      type: TEXT
+  parameterGroups: []
+timestamp: May 30, 2021, 1:57:24 AM
+component: f7-card
+config:
+  expandable: true
+  swipeToClose: true
+  backdrop: true
+  class:
+    - card-expandable-animate-width
+  style:
+    height: 120px
+    max-height: 120px
+    min-height: 120px
+    min-width: 110px
+    max-width: 400px
+    margin: 5px
+    --f7-theme-color: var(--f7-text-color)
+    background-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+slots:
+  default:
+    - component: f7-card-content
+      config:
+        style:
+          width: 100%
+      slots:
+        default:
+          - component: oh-button
+            config:
+              iconF7: xmark_circle_fill
+              iconSize: 30px
+              style:
+                position: absolute
+                top: 0
+                right: 0
+                padding-top: 10px
+                padding-bottom: 35px
+                z-index: 999
+              class:
+                - card-opened-fade-in
+                - cell-close-button
+                - card-close
+          - component: f7-block
+            config:
+              class:
+                - no-padding
+              style:
+                margin: -5px
+                height: 200px
+            slots:
+              default:
+                - component: f7-row
+                  config:
+                    style:
+                      height: 20px
+                      white-space: nowrap
+                      flex-wrap: nowrap
+                      text-overflow: ellipsis
+                  slots:
+                    default:
+                      - component: f7-col
+                        slots:
+                          default:
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  flex-wrap: nowrap
+                                  width: 100%
+                              slots:
+                                default:
+                                  - component: f7-icon
+                                    config:
+                                      material: directions_car
+                                      size: 20px
+                                      style:
+                                        margin-top: 0px
+                                  - component: Label
+                                    config:
+                                      text: =props.propLabel
+                                      style:
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        text-overflow: ellipsis
+                                        font-size: 16px
+                                        font-weight: 600
+                                        margin-left: 2px
+                                        margin-top: -2px
+                            - component: f7-row
+                              config:
+                                style:
+                                  white-space: nowrap
+                                  flex-wrap: nowrap
+                                  text-overflow: ellipsis
+                              slots:
+                                default:
+                                  - component: f7-chip
+                                    config:
+                                      text: '=(items[(props.itemPrefix + "_LockVehicle")].state === "ON") ? "locked" : "unlocked" '
+                                      color: '=(items[(props.itemPrefix + "_LockVehicle")].state === "ON") ? "green" : "red" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  flex-wrap: nowrap
+                                  width: 100%
+                              slots:
+                                default:
+                                  - component: f7-chip
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+                                      text: '="Bat: " + items[(props.itemPrefix + "_RemainingElectric")].state'
+                                      color: '=items[(props.itemPrefix + "_RemainingElectric")].state < "10" ? "red" : "green" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                                  - component: f7-chip
+                                    config:
+                                      text: '="Fuel: " + items[(props.itemPrefix + "_RemainingFuel")].state'
+                                      color: '=items[(props.itemPrefix + "_RemainingFuel")].state < "20" ? "red" : "green" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  white-space: nowrap
+                                  flex-wrap: nowrap
+                                  text-overflow: ellipsis
+                              slots:
+                                default:
+                                  - component: f7-icon
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+                                      material: ev_station
+                                      size: 16px
+                                      color: green
+                                      style:
+                                        margin-top: 20px
+                                  - component: Label
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+                                      text: =(Number.parseFloat(items[(props.itemPrefix + "_ElectricRange")].state.split(" ")[0])).toFixed(0) + ' km'
+                                      style:
+                                        text-overflow: ellipsis
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        margin-top: 20px
+                                        margin-left: 1px
+                                        font-size: 10px
+                                        font-weight: 500
+                                  - component: f7-icon
+                                    config:
+                                      material: local_gas_station
+                                      size: 15px
+                                      color: blue
+                                      style:
+                                        margin-top: 20px
+                                        margin-left: 2px
+                                  - component: Label
+                                    config:
+                                      text: =(Number.parseFloat(items[(props.itemPrefix + "_PrimaryRange")].state.split(" ")[0])).toFixed(0) + ' km'
+                                      style:
+                                        text-overflow: ellipsis
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        margin-left: 1px
+                                        margin-top: 20px
+                                        font-size: 10px
+                                        font-weight: 500
+          - component: f7-block
+            config:
+              class:
+                - card-prevent-open
+                - card-content-padding
+              style:
+                height: 200px
+            slots:
+              default:
+                - component: oh-image
+                  config:
+                    url: =props.pictureUrl
+                    style:
+                      width: 100%
+                      object-fit: cover
+                - component: oh-list
+                  config:
+                    class:
+                      - padding
+                  slots:
+                    default:
+                      - component: f7-segmented
+                        config:
+                          strong: true
+                          style:
+                            --f7-segmented-strong-button-active-box-shadow: 0 4px 0px -2px gray
+                            --f7-segmented-strong-button-font-color: gray
+                            --f7-segmented-strong-bg-color: white
+                            z-index: 999
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Info
+                                active: =!vars.tab || vars.tab === 'information'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: information
+                                style:
+                                  color: '=(vars.tab === "information") ? "black" : "lightgray"'
+                            - component: oh-button
+                              config:
+                                text: Control
+                                active: =vars.tab === 'control'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: control
+                                style:
+                                  color: '=(vars.tab === "control") ? "black" : "lightgray"'
+                            - component: oh-button
+                              config:
+                                text: Status
+                                active: =vars.tab === 'status'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: status
+                                style:
+                                  color: '=(vars.tab === "status") ? "black" : "lightgray"'
+                            - component: oh-button
+                              config:
+                                text: Location
+                                active: =vars.tab === 'location'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: location
+                                style:
+                                  color: '=(vars.tab === "location") ? "black" : "lightgray"'
+                            - component: oh-button
+                              config:
+                                text: Range
+                                active: =vars.tab === 'range'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: range
+                                style:
+                                  color: '=(vars.tab === "range") ? "black" : "lightgray"'
+                            - component: oh-button
+                              config:
+                                text: Service
+                                active: =vars.tab === 'maintenance'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: maintenance
+                                style:
+                                  color: '=(vars.tab === "maintenance") ? "black" : "lightgray"'
+                            - component: oh-button
+                              config:
+                                text: Doors
+                                active: =vars.tab === 'doors'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: doors
+                                style:
+                                  color: '=(vars.tab === "doors") ? "black" : "lightgray"'
+                            - component: oh-button
+                              config:
+                                text: Windows
+                                active: =vars.tab === 'windows'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: windows
+                                style:
+                                  color: '=(vars.tab === "windows") ? "black" : "lightgray"'
+                            - component: oh-button
+                              config:
+                                text: Tires
+                                active: =vars.tab === 'tires'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: tires
+                                style:
+                                  color: '=(vars.tab === "tires") ? "black" : "lightgray"'
+                      - component: oh-list
+                        config:
+                          visible: =(!vars.tab) || vars.tab === 'information'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                sourceType: array
+                                for: item
+                                in:
+                                  - infoItem: LastUpdate
+                                    label: Last Update
+                                  - infoItem: LastAction
+                                    label: Last Action
+                                  - infoItem: LastActionResult
+                                    label: Last Action Result
+                                  - infoItem: LastActionPending
+                                    label: Last Action Pending
+                                fragment: true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.label
+                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].st
+                      - component: oh-toggle-item
+                        config:
+                          visible: =vars.tab === 'control'
+                          title: Update Vehicle Status
+                          item: props.itemPrefix + "_UpdateVehicleStatus"
+                      - component: oh-toggle-item
+                        config:
+                          visible: =vars.tab === 'control'
+                          title: Lock Vehicle
+                          item: props.itemPrefix + "_LockVehicle"
+                      - component: oh-toggle-item
+                        config:
+                          visible: =vars.tab === 'control'
+                          title: Flash
+                          item: props.itemPrefix + "_Flash"
+                      - component: oh-toggle-item
+                        config:
+                          visible: =vars.tab === 'control'
+                          title: Honk and Flash
+                          item: props.itemPrefix + "_HonkandFlash"
+                      - component: oh-list-item
+                        config:
+                          visible: =vars.tab === 'control'
+                          title: Honk/Flash Duration
+                          item: props.itemPrefix + "_HonkFlashDuration"
+                          badge: =items[props.itemPrefix + "_HonkFlashDuration"].displayState || items[props.itemPrefix + "_HonkFlashDuration"].state
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'status'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                sourceType: array
+                                for: item
+                                in:
+                                  - infoItem: VehicleLocked
+                                    label: Vehicle Locked
+                                    icon: car_door
+                                  - infoItem: MaintenanceActionRequired
+                                    label: Maintenance Action Required
+                                    icon: engine_off_outline
+                                  - infoItem: AllWindowsClosed
+                                    label: All Windows Closed
+                                    icon: car_door
+                                  - infoItem: AllTiresOK
+                                    label: All Tires OK
+                                    icon: car_tire_alert
+                                  - infoItem: ParkingLight
+                                    label: Parking Light
+                                    icon: car_parking_lights
+                                  - infoItem: OutsideTemperature
+                                    label: Outside Temperature
+                                    icon: car_door
+                                  - infoItem: ParkingBreak
+                                    label: Parking Break
+                                    icon: car_brake_parking
+                                  - infoItem: CurrentSpeed
+                                    label: Current Speed
+                                    icon: car_door
+                                  - infoItem: Kilometer
+                                    label: Kilometer
+                                    icon: car_door
+                                fragment: true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      icon: '=themeOptions.dark === "light" ? "oh:" + loop.item.icon : "oh:" + loop.item.icon + "_white" '
+                                      title: =loop.item.label
+                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].state
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'maintenance'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                sourceType: array
+                                for: item
+                                in:
+                                  - infoItem: DistanceOilChange
+                                    label: Distance Oil Change
+                                  - infoItem: IntervalOilChange
+                                    label: Interval Oil Change
+                                  - infoItem: DistanceInspection
+                                    label: Distance to Inspection
+                                  - infoItem: TimetoInspection
+                                    label: Time to Inspection
+                                  - infoItem: OilPercentage
+                                    label: Oil Percentage
+                                  - infoItem: DistanceAdBlue
+                                    label: Distance Ad Blue
+                                fragment: true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.label
+                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].state
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'range'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: i
+                                sourceType: itemsInGroup
+                                groupItem: VWTiguan
+                                filter: loop.i.name.includes("Range") == true
+                                fetchMetadata: semantics,widgetOrder
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.i.label
+                                      badge: =loop.i.state
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'doors'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                sourceType: array
+                                for: item
+                                in:
+                                  - infoItem: FrontLeftDoor
+                                    label: Front Left Door
+                                  - infoItem: FrontLeftDoorLocked
+                                    label: Front Left Door Locked
+                                  - infoItem: FrontLeftDoorSafety
+                                    label: Front Left Door Safety
+                                  - infoItem: RearLeftDoor
+                                    label: Rear Left Door
+                                  - infoItem: RearLeftDoorLocked
+                                    label: Rear Left Door Locked
+                                  - infoItem: RearLeftDoorSafety
+                                    label: Rear Left Door Safety
+                                  - infoItem: FrontRightDoor
+                                    label: Front Right Door
+                                  - infoItem: FrontRightDoorLocked
+                                    label: Front Right Door Locked
+                                  - infoItem: FrontRightDoorSafety
+                                    label: Front Right Door Safety
+                                  - infoItem: RearRightDoor
+                                    label: Rear Right Door
+                                  - infoItem: RearRightDoorLocked
+                                    label: Rear Right Door Locked
+                                  - infoItem: RearRightDoorSafety
+                                    label: Rear Right Door Safety
+                                  - infoItem: Trunk
+                                    label: Trunk
+                                  - infoItem: TrunkLocked
+                                    label: Trunk Locked
+                                  - infoItem: TrunkSafety
+                                    label: Trunk Safety
+                                  - infoItem: Hood
+                                    label: Hood
+                                  - infoItem: HoodLocked
+                                    label: Hood Locked
+                                  - infoItem: HoodSafety
+                                    label: Hood Safety
+                                fragment: true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      icon: '=themeOptions.dark === "light" ? "oh:car_door" : "oh:car_door_white" '
+                                      title: =loop.item.label
+                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].state
+                                      badgeColor: '=(items[props.itemPrefix + "_" + loop.item.infoItem].state === "CLOSED") ? "green" : (items[props.itemPrefix + "_" + loop.item.infoItem].state === "OPEN") ? "red" : (items[props.itemPrefix + "_" + loop.item.infoItem].state === "ON") ? "green" : "red" '
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'windows'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                sourceType: array
+                                for: item
+                                in:
+                                  - infoItem: FrontLeftWindow
+                                    label: Front Left Window
+                                  - infoItem: FrontLeftWindowPosition
+                                    label: Front Left Window Position
+                                  - infoItem: RearLeftWindow
+                                    label: Rear Left Window
+                                  - infoItem: RearLeftWindowPosition
+                                    label: Rear Left Window Position
+                                  - infoItem: FrontRightWindow
+                                    label: Front Right Window
+                                  - infoItem: FrontRightWindowPosition
+                                    label: Front Right Window Position
+                                  - infoItem: RearRightWindow
+                                    label: Rear Right Window
+                                  - infoItem: RearRightWindowPosition
+                                    label: Rear Right Window Position
+                                fragment: true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      icon: '=themeOptions.dark === "light" ? "oh:car_door" : "oh:car_door_white" '
+                                      title: =loop.item.label
+                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].state
+                                      badgeColor: '=(items[props.itemPrefix + "_" + loop.item.infoItem].state === "CLOSED") ? "green" : (items[props.itemPrefix + "_" + loop.item.infoItem].state === "OPEN") ? "red" : "gray" '
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'tires'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                sourceType: array
+                                for: item
+                                in:
+                                  - infoItem: FrontLeftTirePressure
+                                    label: Front Left Pressure
+                                  - infoItem: FrontRightTirePressure
+                                    label: Front Right Pressure
+                                  - infoItem: RearLeftPressureOK
+                                    label: Rear Left Pressure
+                                  - infoItem: RearRightPressureOK
+                                    label: Rear Right Pressure
+                                fragment: true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      icon: '=themeOptions.dark === "light" ? "oh:car_tire_alert" : "oh:car_tire_alert_white" '
+                                      title: =loop.item.label
+                                      badge: '=(items[props.itemPrefix + "_" + loop.item.infoItem].state === "ON") ? "GOOD" : "BAD" '
+                                      badgeColor: '=(items[props.itemPrefix + "_" + loop.item.infoItem].state === "ON") ? "green" : "red" '
