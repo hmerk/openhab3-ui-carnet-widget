@@ -18,7 +18,7 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: May 30, 2021, 1:57:24 AM
+timestamp: May 30, 2021, 2:13:00 AM
 component: f7-card
 config:
   expandable: true
@@ -407,6 +407,72 @@ slots:
                                       badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].state
                       - component: oh-list
                         config:
+                          visible: =vars.tab === 'location'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                sourceType: array
+                                for: item
+                                in:
+                                  - infoItem: LastLocation
+                                    label: Last Location
+                                  - infoItem: LastPositionUpdate
+                                    label: Last Position Update
+                                  - infoItem: LastAddress
+                                    label: Last Address
+                                  - infoItem: ParkingPosition
+                                    label: Parking Position
+                                  - infoItem: ParkingAddress
+                                    label: Parking Address
+                                  - infoItem: ParkingTime
+                                    label: Parking Time
+                                fragment: true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.label
+                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].state
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'range'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                sourceType: array
+                                for: item
+                                in:
+                                  - infoItem: TotalRange
+                                    label: Total Range
+                                  - infoItem: PrimaryRange
+                                    label: Primary Range
+                                  - infoItem: PrimaryFuelType
+                                    label: Primary Fuel Type
+                                  - infoItem: SecondaryRange
+                                    label: Secondary Range
+                                  - infoItem: SecondaryFuelType
+                                    label: Secondary Fuel Type
+                                  - infoItem: RemainingFuel
+                                    label: Remaining Fuel
+                                  - infoItem: FuelMethod
+                                    label: Fuel Method
+                                  - infoItem: NaturalGas
+                                    label: Natural Gas
+                                fragment: true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.label
+                                      badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].state
+                      - component: oh-list
+                        config:
                           visible: =vars.tab === 'maintenance'
                           class:
                             - margin-left
@@ -436,26 +502,6 @@ slots:
                                     config:
                                       title: =loop.item.label
                                       badge: =items[props.itemPrefix + "_" + loop.item.infoItem].displayState || items[props.itemPrefix + "_" + loop.item.infoItem].state
-                      - component: oh-list
-                        config:
-                          visible: =vars.tab === 'range'
-                          class:
-                            - margin-left
-                        slots:
-                          default:
-                            - component: oh-repeater
-                              config:
-                                for: i
-                                sourceType: itemsInGroup
-                                groupItem: VWTiguan
-                                filter: loop.i.name.includes("Range") == true
-                                fetchMetadata: semantics,widgetOrder
-                              slots:
-                                default:
-                                  - component: oh-list-item
-                                    config:
-                                      title: =loop.i.label
-                                      badge: =loop.i.state
                       - component: oh-list
                         config:
                           visible: =vars.tab === 'doors'
