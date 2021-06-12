@@ -1,0 +1,794 @@
+uid: widget_carnet_V2.1
+tags: []
+props:
+  parameters:
+    - description: Label
+      label: Label (optional)
+      name: propLabel
+      required: false
+      type: TEXT
+    - context: item
+      description: Name of Car Group Item
+      label: Car Group (mandatory)
+      name: carGroup
+      required: true
+      type: TEXT
+    - description: prefix for item names.
+      label: Item prefix (mandatory)
+      name: itemPrefix
+      required: true
+      type: TEXT
+    - description: Picture
+      label: Picture URL (optional)
+      name: pictureUrl
+      required: false
+      type: TEXT
+  parameterGroups: []
+timestamp: Jun 13, 2021, 1:41:16 AM
+component: f7-card
+config:
+  expandable: true
+  swipeToClose: true
+  backdrop: true
+  class:
+    - card-expandable-animate-width
+  style:
+    height: 120px
+    max-height: 120px
+    min-height: 120px
+    min-width: 110px
+    max-width: 400px
+    margin: 5px
+    --f7-theme-color: var(--f7-text-color)
+    background-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+slots:
+  default:
+    - component: f7-card-content
+      config:
+        style:
+          width: 100%
+      slots:
+        default:
+          - component: oh-button
+            config:
+              iconF7: xmark_circle_fill
+              iconSize: 30px
+              style:
+                position: absolute
+                top: 0
+                right: 0
+                padding-top: 10px
+                padding-bottom: 35px
+                z-index: 999
+              class:
+                - card-opened-fade-in
+                - card-close
+          - component: f7-block
+            config:
+              class:
+                - no-padding
+              style:
+                margin: -5px
+                height: 200px
+            slots:
+              default:
+                - component: f7-row
+                  config:
+                    style:
+                      height: 20px
+                      white-space: nowrap
+                      flex-wrap: nowrap
+                      text-overflow: ellipsis
+                  slots:
+                    default:
+                      - component: f7-col
+                        slots:
+                          default:
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  flex-wrap: nowrap
+                                  width: 100%
+                              slots:
+                                default:
+                                  - component: f7-icon
+                                    config:
+                                      material: directions_car
+                                      size: 20px
+                                      style:
+                                        margin-top: 0px
+                                  - component: Label
+                                    config:
+                                      text: =props.propLabel
+                                      style:
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        text-overflow: ellipsis
+                                        font-size: 16px
+                                        font-weight: 600
+                                        margin-left: 2px
+                                        margin-top: -2px
+                            - component: f7-row
+                              config:
+                                style:
+                                  white-space: nowrap
+                                  flex-wrap: nowrap
+                                  text-overflow: ellipsis
+                              slots:
+                                default:
+                                  - component: f7-chip
+                                    config:
+                                      text: '=(items[(props.itemPrefix + "_control_LockVehicle")].state === "ON") ? "locked" : "unlocked" '
+                                      color: '=(items[(props.itemPrefix + "_control_LockVehicle")].state === "ON") ? "green" : "red" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  flex-wrap: nowrap
+                                  width: 100%
+                              slots:
+                                default:
+                                  - component: f7-chip
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_range_PrimaryFuelType")].state == 3) ? true : false '
+                                      text: '="Bat: " + items[(props.itemPrefix + "_range_RemainingElectric")].state'
+                                      color: '=items[(props.itemPrefix + "_range_RemainingElectric")].state < "10" ? "red" : "green" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                                  - component: f7-chip
+                                    config:
+                                      text: '="Fuel: " + items[(props.itemPrefix + "_range_RemainingFuel")].state'
+                                      color: '=items[(props.itemPrefix + "_range_RemainingFuel")].state < "20" ? "red" : "green" '
+                                      style:
+                                        font-size: 11px
+                                        font-weight: 600
+                            - component: f7-row
+                              config:
+                                class:
+                                  - justify-content-flex-start
+                                style:
+                                  white-space: nowrap
+                                  flex-wrap: nowrap
+                                  text-overflow: ellipsis
+                              slots:
+                                default:
+                                  - component: f7-icon
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_range_PrimaryFuelType")].state == 3) ? true : false '
+                                      material: ev_station
+                                      size: 16px
+                                      color: green
+                                      style:
+                                        margin-top: 20px
+                                  - component: Label
+                                    config:
+                                      visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+                                      text: =(Number.parseFloat(items[(props.itemPrefix + "_range_ElectricRange")].state.split(" ")[0])).toFixed(0) + ' km'
+                                      style:
+                                        text-overflow: ellipsis
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        margin-top: 20px
+                                        margin-left: 1px
+                                        font-size: 10px
+                                        font-weight: 500
+                                  - component: f7-icon
+                                    config:
+                                      material: local_gas_station
+                                      size: 15px
+                                      color: blue
+                                      style:
+                                        margin-top: 20px
+                                        margin-left: 2px
+                                  - component: Label
+                                    config:
+                                      text: =(Number.parseFloat(items[(props.itemPrefix + "_range_PrimaryRange")].state.split(" ")[0])).toFixed(0) + ' km'
+                                      style:
+                                        text-overflow: ellipsis
+                                        overflow: hidden
+                                        white-space: nowrap
+                                        margin-left: 1px
+                                        margin-top: 20px
+                                        font-size: 10px
+                                        font-weight: 500
+          - component: f7-block
+            config:
+              class:
+                - card-prevent-open
+                - card-content-padding
+              style:
+                height: 200px
+            slots:
+              default:
+                - component: oh-image
+                  config:
+                    visible: "=(!props.pictureUrl) ?  false : true"
+                    url: =props.pictureUrl
+                    style:
+                      width: 100%
+                      object-fit: cover
+                - component: f7-swiper
+                  config:
+                    visible: "=(!props.pictureUrl) ?  true : false"
+                    navigation: true
+                    init: true
+                    class:
+                      - padding-top
+                      - padding-bottom
+                    params:
+                      initialSlide: 0
+                      observer: true
+                      observeSlideChildren: true
+                      updateOnWindowResize: true
+                      mousewheel: true
+                      keyboard: true
+                      slidesPerView: 1
+                    style:
+                      --swiper-navigation-size: 20px
+                      --swiper-navigation-color: gray
+                  slots:
+                    default:
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-image
+                              config:
+                                url: =items[(props.itemPrefix + "_Pictures_ImageUrl1")].state
+                                style:
+                                  width: 100%
+                                  object-fit: cover
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-image
+                              config:
+                                url: =items[(props.itemPrefix + "_Pictures_ImageUrl2")].state
+                                style:
+                                  width: 100%
+                                  object-fit: cover
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-image
+                              config:
+                                url: =items[(props.itemPrefix + "_Pictures_ImageUrl3")].state
+                                style:
+                                  width: 100%
+                                  object-fit: cover
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-image
+                              config:
+                                url: =items[(props.itemPrefix + "_Pictures_ImageUrl4")].state
+                                style:
+                                  width: 100%
+                                  object-fit: cover
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-image
+                              config:
+                                url: =items[(props.itemPrefix + "_Pictures_ImageUrl5")].state
+                                style:
+                                  width: 100%
+                                  object-fit: cover
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-image
+                              config:
+                                url: =items[(props.itemPrefix + "_Pictures_ImageUrl6")].state
+                                style:
+                                  width: 100%
+                                  object-fit: cover
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-image
+                              config:
+                                url: =items[(props.itemPrefix + "_Pictures_ImageUrl7")].state
+                                style:
+                                  width: 100%
+                                  object-fit: cover
+                - component: f7-swiper
+                  config:
+                    init: true
+                    class:
+                      - padding-top
+                      - padding-bottom
+                    params:
+                      initialSlide: 0
+                      observer: true
+                      observeSlideChildren: true
+                      updateOnWindowResize: true
+                      mousewheel: true
+                      keyboard: true
+                      slidesPerView: 3
+                    style:
+                      --swiper-navigation-size: 20px
+                      --swiper-navigation-color: gray
+                  slots:
+                    default:
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Information
+                                active: =!vars.tab || vars.tab === 'information'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: information
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Control
+                                active: =vars.tab === 'control'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: control
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Status
+                                active: =vars.tab === 'status'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: status
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Location
+                                active: =vars.tab === 'location'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: location
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Range
+                                active: =vars.tab === 'range'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: range
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Maintanance
+                                active: =vars.tab === 'maintenance'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: maintenance
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Doors
+                                active: =vars.tab === 'doors'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: doors
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Windows
+                                active: =vars.tab === 'windows'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: windows
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Tires
+                                active: =vars.tab === 'tires'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: tires
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Trip Short
+                                active: =vars.tab === 'tripShort'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: tripShort
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Trip Long
+                                active: =vars.tab === 'tripLong'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: tripLong
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: RLU History
+                                active: =vars.tab === 'rluHistory'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: rluHistory
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Geofence Alerts
+                                active: =vars.tab === 'geofenceAlerts'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: geofenceAlerts
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                      - component: f7-swiper-slide
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                text: Speed Alerts
+                                active: =vars.tab === 'speedAlerts'
+                                action: variable
+                                actionVariable: tab
+                                actionVariableValue: speedAlerts
+                                style:
+                                  --f7-button-bg-color: orange
+                                  --f7-button-hover-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                                  --f7-button-pressed-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+                - component: oh-list
+                  config:
+                    class:
+                      - padding
+                  slots:
+                    default:
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =(!vars.tab) || vars.tab === 'information'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("general_") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'control'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("control_") == true
+                              slots:
+                                default:
+                                  - component: oh-toggle-item
+                                    config:
+                                      title: =loop.item.name.split("_")[2]
+                                      item: =loop.item.name
+                                      color: '=(items[loop.item.name].state == "ON") ? "yellow" : "gray"'
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'status'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("status_") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'location'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("location_") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'range'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("range_") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'maintenance'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("maintenance_") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'doors'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("doors_") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      icon: '=themeOptions.dark === "light" ? "oh:car_door" : "oh:car_door_white" '
+                                      title: =loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].state
+                                      badgeColor: '=(items[loop.item.name].state === "CLOSED") ? "green" : (items[loop.item.name].state === "OPEN") ? "red" : (items[props.itemPrefix + "_" + loop.item.infoItem].state === "ON") ? "green" : "red" '
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'windows'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("windows_") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      icon: '=themeOptions.dark === "light" ? "oh:car_door" : "oh:car_door_white" '
+                                      title: =loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].state
+                                      badgeColor: '=(items[loop.item.name].state === "CLOSED") ? "green" : (items[loop.item.name].state === "OPEN") ? "red" : "gray" '
+                      - component: oh-list
+                        config:
+                          visible: =vars.tab === 'tires'
+                          class:
+                            - margin-left
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("tires_") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      icon: '=themeOptions.dark === "light" ? "oh:car_tire_alert" : "oh:car_tire_alert_white" '
+                                      title: =loop.item.name.split("_")[2]
+                                      badge: '=(items[loop.item.name].state === "ON") ? "GOOD" : "BAD" '
+                                      badgeColor: '=(items[loop.item.name].state == "ON") ? "green" : "red" '
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'tripShort'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("tripShort") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[1] + " " + loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'tripLong'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("tripLong") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[1] + " " + loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'rluHistory'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("rluHistory") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[1] + " " + loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'geofenceAlerts'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("geoFenceAlerts") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[1] + " " + loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
+                      - component: oh-list
+                        config:
+                          class:
+                            - margin-left
+                          visible: =vars.tab === 'speedAlerts'
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: item
+                                sourceType: itemsInGroup
+                                groupItem: =props.carGroup
+                                filter: loop.item.label.includes("speedAlerts") == true
+                              slots:
+                                default:
+                                  - component: oh-list-item
+                                    config:
+                                      title: =loop.item.name.split("_")[1] + " " + loop.item.name.split("_")[2]
+                                      badge: =items[loop.item.name].displayState || items[loop.item.name].state
