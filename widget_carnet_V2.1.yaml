@@ -531,7 +531,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("general_") == true
+                                filter: loop.item.name.includes("general_") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -550,7 +550,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("control_") == true
+                                filter: loop.item.name.includes("control_") == true
                               slots:
                                 default:
                                   - component: oh-toggle-item
@@ -570,7 +570,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("status_") == true
+                                filter: loop.item.name.includes("status_") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -589,7 +589,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("location_") == true
+                                filter: loop.item.name.includes("location_") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -608,7 +608,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("range_") == true
+                                filter: loop.item.name.includes("range_") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -627,7 +627,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("maintenance_") == true
+                                filter: loop.item.name.includes("maintenance_") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -646,7 +646,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("doors_") == true
+                                filter: loop.item.name.includes("doors_") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -667,7 +667,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("windows_") == true
+                                filter: loop.item.name.includes("windows_") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -688,7 +688,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("tires_") == true
+                                filter: loop.item.name.includes("tires_") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -709,7 +709,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("tripShort") == true
+                                filter: loop.item.name.includes("tripShort") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -728,7 +728,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("tripLong") == true
+                                filter: loop.item.name.includes("tripLong") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -747,7 +747,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("rluHistory") == true
+                                filter: loop.item.name.includes("rluHistory") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -766,7 +766,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("geoFenceAlerts") == true
+                                filter: loop.item.name.includes("geoFenceAlerts") == true
                               slots:
                                 default:
                                   - component: oh-list-item
@@ -785,7 +785,7 @@ slots:
                                 for: item
                                 sourceType: itemsInGroup
                                 groupItem: =props.carGroup
-                                filter: loop.item.label.includes("speedAlerts") == true
+                                filter: loop.item.name.includes("speedAlerts") == true
                               slots:
                                 default:
                                   - component: oh-list-item
