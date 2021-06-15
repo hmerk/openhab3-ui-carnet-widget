@@ -169,7 +169,7 @@ slots:
                                         margin-top: 20px
                                   - component: Label
                                     config:
-                                      visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+                                      visible: '=(items[(props.itemPrefix + "_range_PrimaryFuelType")].state == 3) ? true : false '
                                       text: =(Number.parseFloat(items[(props.itemPrefix + "_range_ElectricRange")].state.split(" ")[0])).toFixed(0) + ' km'
                                       style:
                                         text-overflow: ellipsis
