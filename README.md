@@ -7,7 +7,7 @@ https://community.openhab.org/t/mercedes-benz-integration/117795/62
 
 # Prerequisits:
 This widget consists of two parts, the dashboard and the details view. You can add them in combination or use just one part individually.
-To keep configuration simple, the predefined channel names of the binding. You should create a car equipement under your model and add all (check advanced) channels as points with predefined names.
+To keep configuration simple, the predefined channel names of the binding are used. You should create a car equipement under your model and add all (check advanced) channels as points with predefined names.
 All Icons in the subfoler need to be copied to your openHAB 3 conf-folders icon directory : ../conf/icons/classic/*
 
 # Config
