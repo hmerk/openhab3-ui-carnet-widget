@@ -23,6 +23,7 @@ The widget takes four config params only:
 # Screenshots
 Like in a real car dashboard, some of the icons only appear if there should be a warning
 ![dashboard](https://user-images.githubusercontent.com/5521736/124281285-de15d380-db49-11eb-9b41-bd8570743769.PNG)
+
 This is like the widget looks like on the overview page. If Your primary fuelType is 3(Electric), it will show battery level and electric range as well.
 After clicking on the widget, it will expand to 
 ![image](https://user-images.githubusercontent.com/5521736/124281402-f7b71b00-db49-11eb-8a3d-c4b435de967c.png)
