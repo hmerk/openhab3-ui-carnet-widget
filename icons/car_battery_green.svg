@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   id="svg2510"
+   sodipodi:docname="car_battery_green.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2514" />
+  <sodipodi:namedview
+     id="namedview2512"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="34.666667"
+     inkscape:cx="11.985577"
+     inkscape:cy="12.014423"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2510" />
+  <path
+     d="M4,3V6H1V20H23V6H20V3H14V6H10V3H4M3,8H21V18H3V8M15,10V12H13V14H15V16H17V14H19V12H17V10H15M5,12V14H11V12H5Z"
+     id="path2508" />
+  <path
+     style="fill:#00ff00;stroke-width:0.0288462"
+     d="M 1.0240385,12.995192 V 6 h 1.5 1.5 V 4.5 3 H 7.0096154 9.9951923 V 4.5 6 H 12 14.004808 V 4.5 3 h 2.985577 2.985577 V 4.5 6 h 1.5 1.5 v 6.995192 6.995193 H 12 1.0240385 Z m 19.9903845,0 V 7.9903846 H 12 2.9855769 V 12.995192 18 H 12 21.014423 Z"
+     id="path2571" />
+  <path
+     style="fill:#00ff00;stroke-width:0.0288462"
+     d="M 5.0048077,12.995192 V 12 h 2.9855769 2.9855774 v 0.995192 0.995193 H 7.9903846 5.0048077 Z"
+     id="path2610" />
+  <path
+     style="fill:#00ff00;stroke-width:0.0288462"
+     d="M 15.014423,14.985577 V 13.990385 H 14.019231 13.024038 V 12.995192 12 h 0.995193 0.995192 v -0.995192 -0.995193 h 0.980769 0.98077 V 11.004808 12 h 1.009615 1.009615 v 0.995192 0.995193 h -1.009615 -1.009615 v 0.995192 0.995192 h -0.98077 -0.980769 z"
+     id="path2649" />
+</svg>

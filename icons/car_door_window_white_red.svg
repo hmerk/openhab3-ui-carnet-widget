@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   id="svg4"
+   sodipodi:docname="car_door_window_white_red.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="31.166667"
+     inkscape:cx="12"
+     inkscape:cy="11.983957"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M19,14H16V16H19V14M22,21H3V11L11,3H21C21.55,3 22,3.45 22,4V21M11.83,5L5.83,11H20V5H11.83Z"
+     id="path2" />
+  <path
+     style="fill:#00ff00;stroke-width:0.0320856;stroke:none"
+     d="M 8.8395722,8.0053476 11.8234,5.0213904 h 4.082952 4.082953 v 2.9839572 2.9839574 h -7.06678 -7.0667806 z"
+     id="path862" />
+  <path
+     style="fill:#00ff00;stroke:none;stroke-width:0.0320856"
+     d="m 16.010695,15 v -0.994652 h 1.491979 1.491978 V 15 15.994652 h -1.491978 -1.491979 z"
+     id="path938" />
+  <path
+     style="fill:#28220b;stroke:none;stroke-width:0.0320856"
+     d="m 16.010695,15 v -0.994652 h 1.491979 1.491978 V 15 15.994652 h -1.491978 -1.491979 z"
+     id="path977" />
+  <path
+     style="fill:#000000;stroke:none;stroke-width:0.0320856"
+     d="m 16.010695,15 v -0.994652 h 1.491979 1.491978 V 15 15.994652 h -1.491978 -1.491979 z"
+     id="path1090" />
+  <path
+     style="fill:#ffffff;stroke:none;stroke-width:0.0320856"
+     d="m 3.0160428,16.002626 v -4.997375 l 4.0033967,-4.0033001 4.0033965,-4.0033006 5.085527,0.0087 5.085527,0.0087 0.214543,0.1056256 c 0.252433,0.1242803 0.41408,0.2977591 0.505749,0.5427647 0.06392,0.170851 0.06443,0.239364 0.06443,8.7538834 V 21 H 12.497326 3.0160428 Z M 19.026738,15 V 13.973262 H 17.502674 15.97861 V 15 16.026738 h 1.524064 1.524064 z M 20.02139,8.0053476 V 4.9893048 H 15.922396 11.823401 L 8.8074866,8.0053476 5.7915718,11.02139 h 7.1149092 7.114909 z"
+     id="path1166" />
+  <path
+     style="fill:#ff0000;stroke:none;stroke-width:0.0320856"
+     d="M 8.8716578,8.0053476 11.855486,5.0213904 h 4.066909 4.06691 V 8.0053476 10.989305 H 12.938567 5.8878299 Z"
+     id="path1288" />
+</svg>
