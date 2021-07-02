@@ -1,0 +1,231 @@
+uid: widget_CarnetDashboard
+tags: []
+props:
+  parameters:
+    - description: CarnetDashboard Widget V1.0
+      required: false
+    - description: Label
+      label: Label (optional)
+      name: propLabel
+      required: false
+      type: TEXT
+    - context: item
+      description: Name of Car Group Item
+      label: Car Group (mandatory)
+      name: carGroup
+      required: true
+      type: TEXT
+    - description: prefix for item names.
+      label: Item prefix (mandatory)
+      name: itemPrefix
+      required: true
+      type: TEXT
+    - description: Picture
+      label: Picture URL (optional)
+      name: pictureUrl
+      required: false
+      type: TEXT
+  parameterGroups: []
+timestamp: Jul 2, 2021, 3:02:08 PM
+component: f7-card
+config:
+  title: =props.propLabel
+  style:
+    noShadow: false
+    class:
+      - padding: 0px
+    border-radius: var(--f7-card-expandable-border-radius)
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.1)
+    background-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+    height: 100px
+    margin-left: 5px
+    margin-right: 5px
+slots:
+  default:
+    - component: f7-block
+      slots:
+        default:
+          - component: f7-chip
+            config:
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: '=(items[(props.itemPrefix + "_status_VehicleLocked")].state === "ON") ? "car_door_lock_green" : "car_door_lock_red" '
+                    style:
+                      height: 18px
+          - component: f7-chip
+            config:
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: '=(items[(props.itemPrefix + "_status_AllWindowsClosed")].state === "ON") ? (themeOptions.dark === "light" ? "car_door_window_black_green" : "car_door_window_white_green") : (themeOptions.dark === "dark" ? "car_door_window_black_red" : "car_door_window_white_red")'
+                    style:
+                      height: 18px
+          - component: f7-chip
+            config:
+              visible: '=(items[(props.itemPrefix + "_status_MaintenanceActionRequired")].state === "ON") ? "true" : "false"'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: engine_off_outline_red
+                    style:
+                      height: 18px
+          - component: f7-chip
+            config:
+              visible: '=(Number.parseFloat(items[(props.itemPrefix + "_maintenance_OilPercentage")].state) > 30) ? "false" : "true"'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: oil_level_red
+                    style:
+                      height: 18px
+          - component: f7-chip
+            config:
+              visible: '=(Number.parseFloat(items[(props.itemPrefix + "_maintenance_IntervalOilChange")].state) > 30) ? "false" : "true"'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: oil_red
+                    style:
+                      height: 18px
+          - component: f7-chip
+            config:
+              visible: '=(items[(props.itemPrefix + "_status_AllTiresOK")].state === "ON") ? "false" : "true"'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: car_tire_alert_red
+                    style:
+                      height: 18px
+          - component: f7-chip
+            config:
+              visible: '=(items[(props.itemPrefix + "_status_ParkingLight")].state === "ON") ? "true" : "false"'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: car_parking_lights_red
+                    style:
+                      height: 18px
+          - component: f7-chip
+            config:
+              visible: '=(Number.parseFloat(items[(props.itemPrefix + "_maintenance_TimetoInspection")].state) < 30) ? "true" : "false"'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: car_info_yellow"
+                    style:
+                      height: 18px
+          - component: f7-chip
+            config:
+              visible: '=(items[(props.itemPrefix + "_status_ParkingBrake")].state === "ON") ? true : false '
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: oh-icon
+                  config:
+                    icon: '=(items[(props.itemPrefix + "_status_ParkingBrake")].state === "ON") ? "car_brake_parking_red" : "car_brake_parking_green"'
+                    style:
+                      height: 18px
+    - component: f7-block
+      slots:
+        default:
+          - component: f7-chip
+            config:
+              visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
+              text: =(Number.parseFloat(items[(props.itemPrefix + "_ElectricRange")].state.split(" ")[0])).toFixed(0) + 'km'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: f7-icon
+                  config:
+                    material: ev_station
+                    color: green
+                    style:
+                      margin-top: 6px
+                      height: 18px
+          - component: f7-chip
+            config:
+              text: =(Number.parseFloat(items[(props.itemPrefix + "_range_PrimaryRange")].state)) + 'km'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: f7-icon
+                  config:
+                    material: local_gas_station
+                    color: green
+                    size: 20
+                    style:
+                      height: 20px
+          - component: f7-chip
+            config:
+              text: =(Number.parseFloat(items[(props.itemPrefix + "_tripLong1_AverageFuel100km")].state)) + ' l/100km '
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: f7-icon
+                  config:
+                    material: local_gas_station
+                    color: green
+                    size: 20
+                    style:
+                      height: 20px
+          - component: f7-chip
+            config:
+              visible: '=(items[(props.itemPrefix + "_maintenance_DistanceAdBlue")].state === "UNDEF") ? false : true '
+              text: =(Number.parseFloat(items[(props.itemPrefix + "_maintenance_DistanceAdBlue")].state)) + 'km'
+              style:
+                --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
+            slots:
+              media:
+                - component: f7-icon
+                  config:
+                    material: local_gas_station
+                    color: blue
+                    size: 20
+                    style:
+                      height: 20px
+    - component: oh-link
+      config:
+        action: popup
+        actionModal: widget:widget_CarnetDetailsView
+        actionModalConfig:
+          propLabel: =props.propLabel
+          carGroup: =props.carGroup
+          itemPrefix: =props.itemPrefix
+          pictureUrl: =props.pictureUrl
+        class:
+          - card-prevent-open
+        style:
+          position: absolute
+          left: 0px
+          top: 0px
+          height: 150%
+          width: 100%
