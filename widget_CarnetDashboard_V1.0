@@ -156,8 +156,8 @@ slots:
         default:
           - component: f7-chip
             config:
-              visible: '=(items[(props.itemPrefix + "_PrimaryFuelType")].state == 3) ? true : false '
-              text: =(Number.parseFloat(items[(props.itemPrefix + "_ElectricRange")].state.split(" ")[0])).toFixed(0) + 'km'
+              visible: '=(items[(props.itemPrefix + "_range_PrimaryFuelType")].state == 3) ? true : false '
+              text: =(Number.parseFloat(items[(props.itemPrefix + "_range_ElectricRange")].state.split(" ")[0])).toFixed(0) + 'km'
               style:
                 --f7-chip-bg-color: "=themeOptions.dark === 'light' ? 'white' : 'black'"
             slots:
